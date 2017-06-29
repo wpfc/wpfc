@@ -117,6 +117,11 @@ public class ClassLoaderUtil {
 		Class<?> clazz = loadClass(className, false);
 		clazzSet.add(clazz);
 	}
+
+
+	public static void loadClass(String className) {
+		loadClass(className, false);
+	}
 	
 }
 
