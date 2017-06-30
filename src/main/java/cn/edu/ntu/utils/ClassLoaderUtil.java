@@ -54,7 +54,7 @@ public class ClassLoaderUtil {
 				URL url = urls.nextElement();
 				if(url != null){
 					String protocal = url.getProtocol();
-					if("flie".equals(protocal)){
+					if("file".equals(protocal)){
 						String packagePath = url.getPath().replace("%20", " ");
 						addClass(clazzSet, packagePath, packageName);
 					}else if("jar".equals(protocal)){
