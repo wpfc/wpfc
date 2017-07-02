@@ -18,6 +18,7 @@ public class BeanHelper {
 			Object obj = ReflectionUtil.newInstance(clazz);
 			BEAN_MAP.put(clazz, obj);
 		}
+		System.out.println("BEAN_MAP :" + BEAN_MAP.keySet().size());
 	}
 	
 	/**

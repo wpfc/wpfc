@@ -15,10 +15,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ClassLoaderUtil {
+public final class ClassLoaderUtil {
 
-	private static final Logger logger = LoggerFactory.getLogger(ClassLoaderUtil.class);
-	
+	//private static final Logger logger = LoggerFactory.getLogger(ClassLoaderUtil.class);
 	
 	/**
 	 * 获取类加载器
@@ -31,13 +30,16 @@ public class ClassLoaderUtil {
 	
 	/**
 	 * 加载类
+	 * @param className   类名
+	 * @param isInitialized   提高加载性能  false   该参数影响加载顺序ClassHelperUtil、BeanHelper
+	 * @return
 	 */
 	public static Class<?> loadClass(String className, boolean isInitialized){
 		Class<?> clazz = null;
 		try {
 			clazz = Class.forName(className, isInitialized, getClassLoader());
 		} catch (ClassNotFoundException e) {
-			logger.error("load class fail");
+			//logger.error("load class fail");
 			e.printStackTrace();
 		}
 		return clazz;
@@ -86,27 +88,28 @@ public class ClassLoaderUtil {
 	
 	private static void addClass(Set<Class<?>> clazzSet, String packagePath, String packageName){
 		File[] files = new File(packagePath).listFiles(new FileFilter(){
-			@Override
 			public boolean accept(File file) {
 				return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
 			}
 		});
-		
-		for(File file : files){
-			String fileName = file.getName();
-			if(file.isFile()){
-				String clazzName = fileName.substring(0, fileName.lastIndexOf("."));
-				if(StringUtils.isEmpty(packageName)){
-					clazzName = packageName + "." + clazzName;
-				}
-				doAddClass(clazzSet, fileName);
-			}else{
-				String subPackagePath = fileName;
-				if(StringUtils.isEmpty(packageName)){
-					subPackagePath = packageName + "/" + subPackagePath;
-				}
-				String subPackageName = fileName;
-				if(StringUtils.isEmpty(packageName)){
+		if(files !=null && files.length >0){
+			for(File file : files){
+				String fileName = file.getName();
+				if(file.isFile()){
+					String clazzName = fileName.substring(0, fileName.lastIndexOf("."));
+					if(!StringUtils.isEmpty(packageName)){
+						clazzName = packageName + "." + clazzName;
+					}
+					doAddClass(clazzSet, clazzName);
+				}else{
+					String subPackagePath = fileName;
+					if(!StringUtils.isEmpty(packagePath)){
+						subPackagePath = packagePath + "/" + subPackagePath;
+					}
+					String subPackageName = fileName;
+					if(!StringUtils.isEmpty(packageName)){
+						subPackageName = packageName + "." + fileName;
+					}
 					addClass(clazzSet, subPackagePath, subPackageName);
 				}
 			}
@@ -120,7 +123,13 @@ public class ClassLoaderUtil {
 
 
 	public static void loadClass(String className) {
-		loadClass(className, false);
+		loadClass(className, true);
+	}
+	
+	
+	public static void main(String[] args){
+		Set<Class<?>> abb = getClassSet("cn.edu.ntu");
+		System.out.println(abb.size());
 	}
 	
 }

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>当前时间：</h1>
+	<h1>WELCOME TO SMART FRAMEWORK. THIS PAGE IS USERLIST PAGE.</h1>
 </body>
 </html>

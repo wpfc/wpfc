@@ -14,6 +14,7 @@ public class ClassHelperUtil {
 	static {
 		String basePackagePath = ConfigUtil.getAppBasePackage();
 		CLASS_SET = ClassLoaderUtil.getClassSet(basePackagePath);
+		System.out.println("Class_set :" + CLASS_SET.size());
 	}
 	
 	/**

@@ -5,7 +5,8 @@ public class HelperLoader {
 	/**
 	 * 加载相应的helper类
 	 */
-	static {
+	public static void init() {
+		
 		Class<?>[] initClazz = {
 			ClassHelperUtil.class,
 			BeanHelper.class,

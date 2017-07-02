@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
  */
 public final class ReflectionUtil {
 
-	private static final Logger logger = LoggerFactory.getLogger(ReflectionUtil.class);
+	//private static final Logger logger = LoggerFactory.getLogger(ReflectionUtil.class);
 	
 	/**
 	 *  创建实例
@@ -51,6 +51,30 @@ public final class ReflectionUtil {
 		return result;
 	}
 	
+	
+	/**
+	 * 调用无参方法
+	 * @param obj
+	 * @param method
+	 * @param args
+	 * @return
+	 */
+	public static Object invokeMethod(Object obj, Method method){
+		Object result = null;
+		try {
+			method.setAccessible(true);
+			result = method.invoke(obj);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	
 	/**
 	 * 设置成员变量的值
 	 * @param obj
@@ -62,7 +86,7 @@ public final class ReflectionUtil {
 			field.setAccessible(true);
 			field.set(obj, value);
 		} catch (Exception e) {
-			logger.error("set field failure!");
+			//logger.error("set field failure!");
 			e.printStackTrace();
 		}
 	}

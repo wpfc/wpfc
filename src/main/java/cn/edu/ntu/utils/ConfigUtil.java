@@ -16,7 +16,7 @@ public class ConfigUtil {
      * @return
      */
     public static String getAppBasePackage() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_BASE_PACKAGE);
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.BASE_PACKAGE);
     }
 
     /**
@@ -25,7 +25,7 @@ public class ConfigUtil {
      * @return
      */
     public static String getAppJspPath() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH);
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JSP_PATH);
     }
 
     /**
@@ -34,7 +34,7 @@ public class ConfigUtil {
      * @return
      */
     public static String getAppAssetPath() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_ASSET_PATH, "/asset/");
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.ASSET_PATH, "/asset/");
     }
     
     /**
