@@ -43,12 +43,13 @@ public class DispathcerServlet extends HttpServlet {
 		HelperLoader.init();
 		//获取ServetContext对象，初始化servlet
 		ServletContext sc = servletConfig.getServletContext();
+		//???
 		//注册处理JSP的Servlet
 		ServletRegistration jspServlet = sc.getServletRegistration("jsp");
-		jspServlet.addMapping(ConfigConstant.APP_JSP_PATH_PREFIX + "/*");
+		jspServlet.addMapping(ConfigConstant.APP_JSP_PATH_PREFIX + "*");
 		//注册处理静态文件的Servlet
 		ServletRegistration defalutServlet = sc.getServletRegistration("default");
-		defalutServlet.addMapping(ConfigConstant.APP_ASSET_PATH + "/*");
+		defalutServlet.addMapping(ConfigConstant.APP_ASSET_PATH + "*");
 	}
 	
 	@Override
