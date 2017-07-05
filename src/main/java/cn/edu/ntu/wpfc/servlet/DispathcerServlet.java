@@ -6,6 +6,7 @@ import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -50,6 +51,14 @@ public class DispathcerServlet extends HttpServlet {
 		//注册处理静态文件的Servlet
 		ServletRegistration defalutServlet = sc.getServletRegistration("default");
 		defalutServlet.addMapping(ConfigConstant.APP_ASSET_PATH + "*");
+<<<<<<< HEAD
+=======
+		
+		Map<String, ? extends ServletRegistration> map = sc.getServletRegistrations();
+		for(Entry<String, ? extends ServletRegistration> entry : map.entrySet()){
+			System.out.println("registrname : " + entry.getKey());
+		}
+>>>>>>> c5e1a1c3fc48d350c084a1cb5aac5e49ba2d4167
 	}
 	
 	@Override
