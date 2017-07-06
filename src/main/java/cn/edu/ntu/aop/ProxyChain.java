@@ -27,6 +27,26 @@ public class ProxyChain {
 		this.proxyList = proxyList;
 	}
 	
+	public Class<?> getTargetClazz() {
+		return targetClazz;
+	}
+
+	public Object getTargetObj() {
+		return targetObj;
+	}
+
+	public Method getTargetMethod() {
+		return targetMethod;
+	}
+
+	public Object[] getMethodParams() {
+		return methodParams;
+	}
+
+	public List<Proxy> getProxyList() {
+		return proxyList;
+	}
+
 	public Object doProxyChain() throws Throwable{
 		Object result = null;
 		if(proxyIndex < proxyList.size()){

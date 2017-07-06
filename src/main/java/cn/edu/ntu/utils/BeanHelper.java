@@ -42,4 +42,12 @@ public class BeanHelper {
 		return (T) BEAN_MAP.get(clazz);
 	}
 	
+	/**
+	 * 将BEAN的实例放入BEAN_MAP中
+	 * @param clazz
+	 * @param instance
+	 */
+	public void setBean(Class<?> clazz, Object instance){
+		BEAN_MAP.put(clazz, instance);
+	}
 }

@@ -1,5 +1,6 @@
 package cn.edu.ntu.utils;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -59,4 +60,35 @@ public class ClassHelperUtil {
 		clazzSet.addAll(getControllerClazzSet());
 		return clazzSet;
 	}
+	
+	/**
+	 * 获取某应用包名下某父类（接口）的所有的子类（实现类）
+	 */
+	public static Set<Class<?>> getClassSetBySuper(Class<?> superClazz){
+		Set<Class<?>> clazzSet = new HashSet<Class<?>>();
+		if(CLASS_SET !=null && CLASS_SET.size() >0){
+			for(Class<?> clazz : CLASS_SET){
+				if(superClazz.isAssignableFrom(clazz) && !superClazz.equals(clazz)){
+					clazzSet.add(clazz);
+				}
+			}
+		}
+		return clazzSet;
+	}
+	
+	/**
+	 * 获取某应用包名下拥有某个注解的所有类
+	 */
+	public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotation){
+		Set<Class<?>> clazzSet = new HashSet<Class<?>>();
+		if(CLASS_SET !=null && CLASS_SET.size() >0){
+			for(Class<?> clazz : CLASS_SET){
+				if(clazz.isAnnotationPresent(annotation)){
+					clazzSet.add(clazz);
+				}
+			}
+		}
+		return clazzSet;
+	}
+	
 }
