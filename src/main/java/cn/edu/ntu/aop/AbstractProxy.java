@@ -27,7 +27,7 @@ public class AbstractProxy implements Proxy {
 		} finally {
 			end();
 		}
-		return null;
+		return result;
 	}
 
 	public void end() {
