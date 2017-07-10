@@ -24,7 +24,9 @@ public final class ReflectionUtil {
 			Map<Class<?>, Object> beanMap = BeanHelper.getBeanMap();
 			obj = beanMap.get(clazz);
 			if(obj == null){
+				//实例化的对象放到BEAN_MAP容器中
 				obj = clazz.newInstance();
+				beanMap.put(clazz, obj);
 			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
