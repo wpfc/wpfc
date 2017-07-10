@@ -2,6 +2,11 @@ package cn.edu.ntu.aop;
 
 import java.lang.reflect.Method;
 
+import cn.edu.ntu.annotation.Aspect;
+import cn.edu.ntu.annotation.Controller;
+
+
+@Aspect(Controller.class)
 public class BeforeProxy extends AbstractProxy {
 
 	@Override

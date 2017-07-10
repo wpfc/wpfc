@@ -3,6 +3,7 @@ package cn.edu.ntu.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,11 @@ public final class ReflectionUtil {
 	public static Object newInstance(Class<?> clazz){
 		Object obj = null;
 		try {
-			obj = clazz.newInstance();
+			Map<Class<?>, Object> beanMap = BeanHelper.getBeanMap();
+			obj = beanMap.get(clazz);
+			if(obj == null){
+				obj = clazz.newInstance();
+			}
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {

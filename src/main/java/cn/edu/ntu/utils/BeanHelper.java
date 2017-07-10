@@ -18,7 +18,6 @@ public class BeanHelper {
 			Object obj = ReflectionUtil.newInstance(clazz);
 			BEAN_MAP.put(clazz, obj);
 		}
-		System.out.println("BEAN_MAP :" + BEAN_MAP.keySet().size());
 	}
 	
 	/**
@@ -27,6 +26,14 @@ public class BeanHelper {
 	 */
 	public static Map<Class<?>, Object> getBeanMap(){
 		return BEAN_MAP;
+	}
+	
+	/**
+	 * 获取bean映射
+	 * @return
+	 */
+	public static void setBeanMap(Map<Class<?>, Object> newMap){
+		BEAN_MAP = newMap;
 	}
 	
 	/**
@@ -47,7 +54,7 @@ public class BeanHelper {
 	 * @param clazz
 	 * @param instance
 	 */
-	public void setBean(Class<?> clazz, Object instance){
+	public static void setBean(Class<?> clazz, Object instance){
 		BEAN_MAP.put(clazz, instance);
 	}
 }

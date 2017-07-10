@@ -8,11 +8,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import cn.edu.ntu.annotation.Aspect;
+import cn.edu.ntu.utils.BeanHelper;
 import cn.edu.ntu.utils.ClassHelperUtil;
 
 public class AopHelper {
+	
+	private static final Logger logger = LoggerFactory.getLogger(AopHelper.class);
 	
 	static{
 		try {
@@ -21,11 +26,14 @@ public class AopHelper {
 			
 			if(!targetMap.isEmpty()){
 				for(Map.Entry<Class<?>, List<Proxy>> entry : targetMap.entrySet()){
-					
+					Class<?> targetClazz = entry.getKey();
+					List<Proxy> proxyList = entry.getValue();
+					Object proxy = ProxyManager.getInstance().getProxy(targetClazz, proxyList);
+					BeanHelper.setBean(targetClazz, proxy);
 				}
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("aop error", e);
 		}
 	}
 

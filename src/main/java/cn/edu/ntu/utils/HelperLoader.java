@@ -1,5 +1,7 @@
 package cn.edu.ntu.utils;
 
+import cn.edu.ntu.aop.AopHelper;
+
 public class HelperLoader {
 
 	/**
@@ -10,6 +12,7 @@ public class HelperLoader {
 		Class<?>[] initClazz = {
 			ClassHelperUtil.class,
 			BeanHelper.class,
+			AopHelper.class,
 			IocHelper.class,
 			ControllerHelper.class
 		};

@@ -2,7 +2,9 @@ package cn.edu.ntu.controller;
 
 import cn.edu.ntu.annotation.Action;
 import cn.edu.ntu.annotation.Controller;
+import cn.edu.ntu.annotation.Inject;
 import cn.edu.ntu.cons.SysConstant;
+import cn.edu.ntu.service.UserService;
 import cn.edu.ntu.wpfc.entity.Data;
 import cn.edu.ntu.wpfc.entity.Param;
 import cn.edu.ntu.wpfc.entity.View;
@@ -10,6 +12,10 @@ import cn.edu.ntu.wpfc.entity.View;
 @Controller
 public class UserController {
 
+	@Inject
+	private UserService userService;
+	
+	
 	@Action(value = "/getUserInfoList", method = SysConstant.RequestMethod.GET)
 	public View getUserInfoList(Param param){
 		
@@ -22,8 +28,16 @@ public class UserController {
 	public Data getUserInfoById(Param param){
 		
 		Data data = new Data(null);
-		data.setMsg("根据用户ID查询用户信息");
+		userService.getUserInfoById(1);
 		return data;
+	}
+
+	public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 	
 }

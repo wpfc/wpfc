@@ -18,17 +18,13 @@ public class ControllerAspect extends AbstractProxy {
 	
 	@Override
 	public void before(Class<?> targetClazz, Method targetMethod, Object[] params) {
-		logger.debug("-----------------start--------------------");
-		logger.debug(String.format("class : %s", targetClazz.getName()));
-		logger.debug(String.format("method : %s", targetMethod.getName()));
-		time = System.currentTimeMillis();
+		logger.info("-----------------start--------------------");
 	}
 	
 	
 	@Override
 	public void after(Class<?> targetClazz, Method targetMethod, Object[] params) {
-		logger.debug(String.format("time : %dms", System.currentTimeMillis() - time));
-		logger.debug("------------------end---------------------");
+		logger.info("------------------end---------------------");
 	}
 	
 }

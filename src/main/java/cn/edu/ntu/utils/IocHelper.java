@@ -1,7 +1,9 @@
 package cn.edu.ntu.utils;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.Set;
 
 import cn.edu.ntu.annotation.Inject;
 
@@ -19,16 +21,26 @@ public class IocHelper {
 					for(Field field : fields){
 						if(field.isAnnotationPresent(Inject.class)){
 							Class<?> fieldClass = field.getType();
-							Object injectObj = beanMap.get(fieldClass);
+							Object injectObj = null;
+							if(!fieldClass.isInterface()){
+								injectObj = beanMap.get(fieldClass);
+							}else{
+								Set<Class<?>> childClazzSet = ClassHelperUtil.getClassSetBySuper(fieldClass);
+								if(childClazzSet !=null && 1 == childClazzSet.size()){
+									Object[] classArray = childClazzSet.toArray();
+									injectObj = beanMap.get(classArray[0]);
+								}else{
+									throw new RuntimeException("inject fail");
+								}
+							}
 							if(injectObj != null){
 								ReflectionUtil.setField(instance, field, injectObj);
 							}
+							System.out.println(instance);
 						}
 					}
 				}
 			}
 		}
-		
 	}
-	
 }

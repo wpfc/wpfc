@@ -6,7 +6,6 @@ import java.util.List;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import sun.security.jca.GetInstance;
 
 public class ProxyManager {
 
