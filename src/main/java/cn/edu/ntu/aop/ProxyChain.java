@@ -47,7 +47,7 @@ public class ProxyChain {
 		return proxyList;
 	}
 
-	public Object doProxyChain() throws Throwable{
+	public Object doProxyChain() throws Throwable {
 		Object result = null;
 		if(proxyIndex < proxyList.size()){
 			result = proxyList.get(proxyIndex++).doProxy(this);

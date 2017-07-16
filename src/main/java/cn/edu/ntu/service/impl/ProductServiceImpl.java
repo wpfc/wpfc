@@ -5,14 +5,17 @@ import java.sql.SQLException;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
 
+import cn.edu.ntu.annotation.Service;
+import cn.edu.ntu.annotation.Transactional;
 import cn.edu.ntu.service.ProductService;
 import cn.edu.ntu.thread.ClientThread;
 import cn.edu.ntu.utils.DBUtil;
 
+@Service
 public class ProductServiceImpl implements ProductService {
 
 	private static final String PRODUCT_SQL = 
-			"update product set product_number = ? where product_id = ?";
+			"update product set product_number = ? where product_id1 = ?";
 	
 	private static final String LOG_SQL = 
 			"insert into log(log_name, log_remark) values (?, ?)";
@@ -23,7 +26,12 @@ public class ProductServiceImpl implements ProductService {
 			Connection conn = DBUtil.getInstance();
 			conn.setAutoCommit(false);
 			
-			updateProductInfo(conn, PRODUCT_SQL);
+			try {
+				updateProductInfo(conn, PRODUCT_SQL);
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			insertLog(conn, LOG_SQL);
 			
 			conn.commit();
@@ -32,20 +40,15 @@ public class ProductServiceImpl implements ProductService {
 		}
 	}
 
-	private void updateProductInfo(Connection conn, String productSql) {
-		try {
-			PreparedStatement ps = (PreparedStatement) conn.prepareStatement(productSql);
-			ps.setInt(1, 23);
-			ps.setInt(2, 1);
-			
-			int row = ps.executeUpdate();
-			if(row != 0){
-				System.out.println("update product successfully!");
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+	private void updateProductInfo(Connection conn, String productSql) throws Throwable {
+		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(productSql);
+		ps.setInt(1, 23);
+		ps.setInt(2, 1);
 		
+		int row = ps.executeUpdate();
+		if(row != 0){
+			System.out.println("update product successfully!");
+		}
 	}
 
 	private void insertLog(Connection conn, String logSql) {
@@ -74,6 +77,14 @@ public class ProductServiceImpl implements ProductService {
 			ClientThread ct = new ClientThread(ps);
 			ct.start();
 		}
+	}
+
+	@Override
+	@Transactional
+	public void testTransaction() throws Throwable{
+		Connection conn = DBUtil.getInstance();
+		updateProductInfo(conn, PRODUCT_SQL);
+		insertLog(conn, LOG_SQL);
 	}
 	
 }

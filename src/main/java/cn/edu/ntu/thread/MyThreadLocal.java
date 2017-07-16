@@ -1,11 +1,12 @@
 package cn.edu.ntu.thread;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MyThreadLocal<T> {
 
-	private Map<Thread, T> containerMap = new HashMap<Thread, T>();
+	private Map<Thread, T> containerMap = Collections.synchronizedMap(new HashMap<Thread, T>());
 	
 	public T get(){
 		Thread current = Thread.currentThread();

@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import cn.edu.ntu.annotation.Aspect;
+import cn.edu.ntu.annotation.Service;
 import cn.edu.ntu.utils.BeanHelper;
 import cn.edu.ntu.utils.ClassHelperUtil;
 
@@ -22,6 +23,7 @@ public class AopHelper {
 	static{
 		try {
 			Map<Class<?>, Set<Class<?>>> proxyMap = createProxyMap();
+			addTransactionProxy(proxyMap);
 			Map<Class<?>, List<Proxy>> targetMap = createTargetMap(proxyMap);
 			
 			if(!targetMap.isEmpty()){
@@ -95,9 +97,10 @@ public class AopHelper {
 	}
 	
 	
-	
-	
-	
+	public static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
+		Set<Class<?>> transactionClassSet = ClassHelperUtil.getClassSetByAnnotation(Service.class);
+		proxyMap.put(TransactionProxy.class, transactionClassSet);
+	}
 	
 	
 	

@@ -35,4 +35,33 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
+	
+	public static void startTransaction(){
+		try {
+			Connection connection = getInstance();
+			connection.setAutoCommit(false);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void endTransaction(){
+		try {
+			Connection connection = getInstance();
+			connection.commit();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void rollback(){
+		try {
+			Connection connection = getInstance();
+			connection.rollback();
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }
