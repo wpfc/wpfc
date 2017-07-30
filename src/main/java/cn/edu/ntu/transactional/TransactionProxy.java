@@ -1,8 +1,10 @@
-package cn.edu.ntu.aop;
+package cn.edu.ntu.transactional;
 
 import java.lang.reflect.Method;
 
 import cn.edu.ntu.annotation.Transactional;
+import cn.edu.ntu.aop.Proxy;
+import cn.edu.ntu.aop.ProxyChain;
 import cn.edu.ntu.utils.DBUtil;
 
 public class TransactionProxy implements Proxy{

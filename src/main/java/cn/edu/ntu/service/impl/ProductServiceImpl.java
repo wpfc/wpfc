@@ -15,10 +15,10 @@ import cn.edu.ntu.utils.DBUtil;
 public class ProductServiceImpl implements ProductService {
 
 	private static final String PRODUCT_SQL = 
-			"update product set product_number = ? where product_id1 = ?";
+			"update product set product_number = ? where product_id = ?";
 	
 	private static final String LOG_SQL = 
-			"insert into log(log_name, log_remark) values (?, ?)";
+			"insert into log(log_name1, log_remark1) values (?, ?)";
 	
 	@Override
 	public void addProduct() {
@@ -83,8 +83,21 @@ public class ProductServiceImpl implements ProductService {
 	@Transactional
 	public void testTransaction() throws Throwable{
 		Connection conn = DBUtil.getInstance();
-		updateProductInfo(conn, PRODUCT_SQL);
-		insertLog(conn, LOG_SQL);
+		PreparedStatement ps = (PreparedStatement) conn.prepareStatement(PRODUCT_SQL);
+		ps.setInt(1, 23);
+		ps.setInt(2, 1);
+		
+		int row = ps.executeUpdate();
+		if(row != 0){
+			System.out.println("update product successfully!");
+		}
+		PreparedStatement ps1 = (PreparedStatement) conn.prepareStatement(LOG_SQL);
+		ps1.setString(1, "后台日志");
+		ps1.setString(2, "hello world to mysql");
+		int flag = ps1.executeUpdate();
+		if(flag != 0){
+			System.out.println("插入后台日志成功！");
+		}
 	}
 	
 }

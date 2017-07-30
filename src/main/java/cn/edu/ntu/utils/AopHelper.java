@@ -1,4 +1,4 @@
-package cn.edu.ntu.aop;
+package cn.edu.ntu.utils;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -13,8 +13,10 @@ import org.slf4j.LoggerFactory;
 
 import cn.edu.ntu.annotation.Aspect;
 import cn.edu.ntu.annotation.Service;
-import cn.edu.ntu.utils.BeanHelper;
-import cn.edu.ntu.utils.ClassHelperUtil;
+import cn.edu.ntu.aop.AbstractProxy;
+import cn.edu.ntu.aop.Proxy;
+import cn.edu.ntu.aop.ProxyManager;
+import cn.edu.ntu.transactional.TransactionProxy;
 
 public class AopHelper {
 	
@@ -23,7 +25,7 @@ public class AopHelper {
 	static{
 		try {
 			Map<Class<?>, Set<Class<?>>> proxyMap = createProxyMap();
-			addTransactionProxy(proxyMap);
+			//addTransactionProxy(proxyMap);
 			Map<Class<?>, List<Proxy>> targetMap = createTargetMap(proxyMap);
 			
 			if(!targetMap.isEmpty()){
@@ -54,17 +56,8 @@ public class AopHelper {
 	 */
 	public static Map<Class<?>, Set<Class<?>>> createProxyMap(){
 		Map<Class<?>, Set<Class<?>>> PROXY_MAP = new HashMap<Class<?>, Set<Class<?>>>();
-		//获取所有的代理类
-		Set<Class<?>> proxyClassSet = ClassHelperUtil.getClassSetBySuper(AbstractProxy.class);
-		if(proxyClassSet != null && proxyClassSet.size() >0){
-			for(Class<?> clazz : proxyClassSet){
-				if(clazz.isAnnotationPresent(Aspect.class)){
-					Aspect aspect = (Aspect) clazz.getAnnotation(Aspect.class);
-					Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
-					PROXY_MAP.put(clazz, targetClassSet);
-				}
-			}
-		}
+		addAspectProxy(PROXY_MAP);
+		addTransactionProxy(PROXY_MAP);
 		return PROXY_MAP;
 	}
 	
@@ -96,8 +89,22 @@ public class AopHelper {
 		return TARGET_MAP;
 	}
 	
-	
-	public static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
+	//获取Aspect代理类与目标类之间的映射关系
+	private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
+		Set<Class<?>> proxyClassSet = ClassHelperUtil.getClassSetBySuper(Proxy.class);
+		if(!proxyClassSet.isEmpty()){
+			for(Class<?> clazz : proxyClassSet){
+				if(clazz.isAnnotationPresent(Aspect.class)){
+					Aspect aspect = clazz.getAnnotation(Aspect.class);
+					Set<Class<?>> targetClazzSet = createTargetClassSet(aspect);
+					proxyMap.put(clazz, targetClazzSet);
+				}
+			}
+		}
+	}
+
+	//获取Transaction(事务)代理类与目标类之间的映射关系
+	private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap){
 		Set<Class<?>> transactionClassSet = ClassHelperUtil.getClassSetByAnnotation(Service.class);
 		proxyMap.put(TransactionProxy.class, transactionClassSet);
 	}

@@ -15,7 +15,7 @@ public class AbstractProxy implements Proxy {
 		
 		start();
 		try {
-			if(true){
+			if(filter(targetClazz, targetMethod, params)){
 				before(targetClazz, targetMethod, params);
 				result = proxyChain.doProxyChain();
 				after(targetClazz, targetMethod, params);

@@ -19,14 +19,27 @@ public class TestProxy {
 //	}
 	
 	
-	public static void main(String[] args){
-		ProxyFactory proxyFactory = new ProxyFactory();
-		proxyFactory.setTarget(new HelloImpl());
+//	public static void main(String[] args){
+//		ProxyFactory proxyFactory = new ProxyFactory();
+//		proxyFactory.setTarget(new HelloImpl());
 //		proxyFactory.addAdvice(new GreetingBeforeAdvice());
 //		proxyFactory.addAdvice(new GreetingAfterReturnningAdvice());
-		proxyFactory.addAdvice(new GreetingAroundAdvice());
-		Hello result = (Hello) proxyFactory.getProxy();
-		result.sayHello("happy every day");
+//		proxyFactory.addAdvice(new GreetingAroundAdvice());
+//		Hello result = (Hello) proxyFactory.getProxy();
+//		result.sayHello("happy every day");
+//	}
+	
+	
+	public static void main(String[] args){
+		Hello hello = new JdkDynamicProxy(new Hello(){
+
+			@Override
+			public void sayHello(String content) {
+				System.out.println("happy new year");
+			}
+			
+		}).getProxy();
+		hello.sayHello("one night in beijing");
 	}
 	
 }

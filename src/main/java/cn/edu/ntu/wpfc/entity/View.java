@@ -12,7 +12,7 @@ public class View {
 
 	private String path;
 	
-	private Map<String, Object> model;
+	private Map<String, Object> model = new HashMap<String, Object>();
 	
 	public View(){}
 	
