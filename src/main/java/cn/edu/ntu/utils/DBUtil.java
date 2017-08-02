@@ -20,7 +20,7 @@ public class DBUtil {
 				Class.forName(driver);
 				connection = (Connection) DriverManager.getConnection(url, username, password);
 			}
-		} catch (ClassNotFoundException | SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return connection;

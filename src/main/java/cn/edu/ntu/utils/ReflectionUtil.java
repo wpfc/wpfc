@@ -37,7 +37,7 @@ public final class ReflectionUtil {
 	public static Object invokeMethod(Object obj, Method method, Object... args){
 		Object result = null;
 		try {
-			if (args.length == 0) {
+			if (0 == args.length) {
                 args = new Object[1];
             } 
 			method.setAccessible(true);

@@ -14,10 +14,8 @@ public class Customer implements Serializable{
 	
 	private String telephone;
 	
-	private String email;
+	private String photo;
 	
-	private String remark;
-
 	public Long getId() {
 		return id;
 	}
@@ -50,20 +48,12 @@ public class Customer implements Serializable{
 		this.telephone = telephone;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getPhoto() {
+		return photo;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
 }
