@@ -21,6 +21,7 @@ public class UserController {
 		
 		View view = new View();
 		view.setPath("userList");
+		view.addModel("tip", "helloworld");
 		return view;
 	}
 	

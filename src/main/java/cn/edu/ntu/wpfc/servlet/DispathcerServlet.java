@@ -95,7 +95,12 @@ public class DispathcerServlet extends HttpServlet {
 				param = new Param(paramMap);
 			}
 			//调用方法
-			Object result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
+			Object result = null;
+			if(param.isEmpty()){
+				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod);
+			}else{
+				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
+			}
 			//返回值类型
 			if(result instanceof View){
 				View view = (View) result;
@@ -105,7 +110,7 @@ public class DispathcerServlet extends HttpServlet {
 					if(path.startsWith("/")){
 						resp.sendRedirect(req.getContextPath() + path);
 					}else{
-						Map<String, Object> model = new HashMap<String, Object>();
+						Map<String, Object> model = ((View) result).getModel();
 						if(!model.isEmpty()){
 							for(Map.Entry<String, Object> entry : model.entrySet()){
 								req.setAttribute(entry.getKey(), entry.getValue());

@@ -1,7 +1,5 @@
 package cn.edu.ntu.utils;
 
-import cn.edu.ntu.aop.AopHelper;
-
 public class HelperLoader {
 
 	/**
