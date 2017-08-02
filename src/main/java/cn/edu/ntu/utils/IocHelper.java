@@ -22,6 +22,7 @@ public class IocHelper {
 						if(field.isAnnotationPresent(Inject.class)){
 							Class<?> fieldClass = field.getType();
 							Object injectObj = null;
+							//判断属性是否是接口，接口则查找其实现类
 							if(!fieldClass.isInterface()){
 								injectObj = beanMap.get(fieldClass);
 							}else{

@@ -1,0 +1,96 @@
+[INFO ][2017-07-05 10:24:33,823][JdkDynamicProxy:25] before carry out the method
+[INFO ][2017-07-05 10:24:33,823][HelloImpl:12] say happy new year to you
+[INFO ][2017-07-05 10:24:33,823][JdkDynamicProxy:27] after carry out the method
+[INFO ][2017-07-05 10:28:03,481][JdkDynamicProxy:26] before carry out the method
+[INFO ][2017-07-05 10:28:03,481][HelloImpl:12] say happy new year to you
+[INFO ][2017-07-05 10:28:03,481][JdkDynamicProxy:28] after carry out the method
+[INFO ][2017-07-05 10:56:44,554][CglibProxy:23] before cglib proxy
+[INFO ][2017-07-05 10:56:44,570][HelloImpl:12] say hello world to you
+[INFO ][2017-07-05 10:56:44,570][CglibProxy:25] after cglib proxy
+[INFO ][2017-07-05 10:57:07,868][CglibProxy:23] before cglib proxy
+[INFO ][2017-07-05 10:57:07,884][HelloImpl:12] say hello world to you
+[INFO ][2017-07-05 10:57:07,884][CglibProxy:25] after cglib proxy
+[INFO ][2017-07-05 11:03:07,833][CglibProxy:32] before cglib proxy
+[INFO ][2017-07-05 11:03:07,864][HelloImpl:12] say hello world to you
+[INFO ][2017-07-05 11:03:07,864][CglibProxy:34] after cglib proxy
+[DEBUG][2017-07-05 11:38:17,736][CglibAopProxy:158] Creating CGLIB proxy: target source is SingletonTargetSource for target object [cn.edu.ntu.proxy.HelloImpl@5e91993f]
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: public void cn.edu.ntu.proxy.HelloImpl.sayHello(java.lang.String)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:773] Found finalize() method - using NO_OVERRIDE
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:785] Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:790] Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[DEBUG][2017-07-05 11:38:17,830][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[INFO ][2017-07-05 11:38:17,861][GreetingBeforeAdvice:16] MethodBeforeAdvice
+[INFO ][2017-07-05 11:38:17,877][HelloImpl:12] say happy every day to you
+[INFO ][2017-07-05 11:38:17,877][GreetingAfterReturnningAdvice:16] AfterReturningAdvice
+[DEBUG][2017-07-05 14:14:23,235][CglibAopProxy:158] Creating CGLIB proxy: target source is SingletonTargetSource for target object [cn.edu.ntu.proxy.HelloImpl@1eb44e46]
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: public void cn.edu.ntu.proxy.HelloImpl.sayHello(java.lang.String)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:773] Found finalize() method - using NO_OVERRIDE
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:785] Found 'equals' method: public boolean java.lang.Object.equals(java.lang.Object)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: public java.lang.String java.lang.Object.toString()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:790] Found 'hashCode' method: public native int java.lang.Object.hashCode()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:822] Unable to apply any optimisations to advised method: protected native java.lang.Object java.lang.Object.clone() throws java.lang.CloneNotSupportedException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.aopalliance.aop.Advice)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract int org.springframework.aop.framework.Advised.indexOf(org.springframework.aop.Advisor)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isFrozen()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(int,org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvice(org.aopalliance.aop.Advice) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setTargetSource(org.springframework.aop.TargetSource)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isProxyTargetClass()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.Class[] org.springframework.aop.framework.Advised.getProxiedInterfaces()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.String org.springframework.aop.framework.Advised.toProxyConfigString()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isInterfaceProxied(java.lang.Class)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvice(org.aopalliance.aop.Advice)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract org.springframework.aop.TargetSource org.springframework.aop.framework.Advised.getTargetSource()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract org.springframework.aop.Advisor[] org.springframework.aop.framework.Advised.getAdvisors()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setPreFiltered(boolean)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.setExposeProxy(boolean)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isExposeProxy()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(int,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.addAdvisor(org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.isPreFiltered()
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.replaceAdvisor(org.springframework.aop.Advisor,org.springframework.aop.Advisor) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract void org.springframework.aop.framework.Advised.removeAdvisor(int) throws org.springframework.aop.framework.AopConfigException
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract boolean org.springframework.aop.framework.Advised.removeAdvisor(org.springframework.aop.Advisor)
+[DEBUG][2017-07-05 14:14:23,313][CglibAopProxy$ProxyCallbackFilter:779] Method is declared on Advised interface: public abstract java.lang.Class org.springframework.aop.TargetClassAware.getTargetClass()
+[INFO ][2017-07-05 14:14:23,329][GreetingAroundAdvice:14] before arround
+[INFO ][2017-07-05 14:14:23,345][HelloImpl:12] say happy every day to you
+[INFO ][2017-07-05 14:14:23,345][GreetingAroundAdvice:16] after arround
+[INFO ][2017-07-06 16:24:31,548][HelloImpl:12] say new aop to you
+[INFO ][2017-07-06 16:25:11,294][BeforeProxy:7] before proxy method
+[INFO ][2017-07-06 16:25:11,309][HelloImpl:12] say new aop to you
+[INFO ][2017-07-06 16:25:11,309][AfterProxy:7] after proxy method
+[INFO ][2017-07-06 16:42:07,062][BeforeProxy:7] before proxy method
+[INFO ][2017-07-06 16:42:07,078][HelloImpl:12] say new aop to you
+[INFO ][2017-07-06 16:42:07,078][AfterProxy:7] after proxy method
+[INFO ][2017-07-06 16:42:52,423][BeforeProxy:7] before proxy method
+[INFO ][2017-07-06 16:42:52,442][HelloImpl:12] say new aop to you
+[INFO ][2017-07-06 16:42:52,443][AfterProxy:7] after proxy method
+[INFO ][2017-07-06 16:44:17,680][AfterProxy:12] before after proxy method
+[INFO ][2017-07-06 16:44:17,680][BeforeProxy:7] before before proxy method
+[INFO ][2017-07-06 16:44:17,695][HelloImpl:12] say new aop to you
+[INFO ][2017-07-06 16:44:17,695][BeforeProxy:12] after before proxy method
+[INFO ][2017-07-06 16:44:17,695][AfterProxy:7] after after proxy method

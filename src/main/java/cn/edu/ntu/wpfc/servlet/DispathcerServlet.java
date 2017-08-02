@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 
 import cn.edu.ntu.cons.ConfigConstant;
+import cn.edu.ntu.utils.BeanHelper;
 import cn.edu.ntu.utils.ControllerHelper;
 import cn.edu.ntu.utils.HelperLoader;
 import cn.edu.ntu.utils.JsonUtil;
@@ -65,8 +66,8 @@ public class DispathcerServlet extends HttpServlet {
 		//获取处理Handler
 		Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
 		if(handler != null){
-			//容器中每个对象都是单例的，故初始化前先到BEAN_MAP中看下实例是否已经存在
-			Object controllerInstance = ReflectionUtil.newInstance(handler.getControllerClazz());
+			//获取controller实例
+			Object controllerInstance = BeanHelper.getBean(handler.getControllerClazz());
 			Method actionMethod = handler.getActionMethod();
 			//处理请求对象
 			Map<String, Object> paramMap = new HashMap<String, Object>();
