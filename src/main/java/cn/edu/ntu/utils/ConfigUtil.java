@@ -68,4 +68,12 @@ public class ConfigUtil {
     public static String getJdbcPassword(){
     	return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.JDBC_PASSWORD);
     }
+    
+    /**
+     * 获取文件上传数量限制
+     * @return
+     */
+    public static int getAppUploadLimit(){
+    	return PropsUtil.getInt(CONFIG_PROPS, ConfigConstant.APP_UPLOAD_LIMIT, 10);
+    }
 }

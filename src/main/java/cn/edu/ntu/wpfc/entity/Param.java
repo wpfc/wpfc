@@ -1,6 +1,11 @@
 package cn.edu.ntu.wpfc.entity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import cn.edu.ntu.utils.StringUtil;
 
 /**
  * 参数包装类
@@ -9,28 +14,80 @@ import java.util.Map;
  */
 public class Param {
 
-	private Map<String, Object> paramMap;
+	private List<FieldParam> fieldParamList;
 	
-	public Param(){}
+	private List<FileParam> fileParamList;
+
+	public Param(List<FieldParam> fieldParamList) {
+		super();
+		this.fieldParamList = fieldParamList;
+	}
+
+	public Param(List<FieldParam> fieldParamList, List<FileParam> fileParamList) {
+		super();
+		this.fieldParamList = fieldParamList;
+		this.fileParamList = fileParamList;
+	}
+
+	public boolean isEmpty(){
+		return fieldParamList.isEmpty() && fileParamList.isEmpty();
+	}
 	
-	public Param(Map<String, Object> paramMap){
-		this.paramMap = paramMap;
+	public Map<String, Object> getFieldParamMap(){
+		Map<String, Object> fieldParamMap = new HashMap<String, Object>();
+		if(!fieldParamList.isEmpty()){
+			for(FieldParam param : fieldParamList){
+				String fieldName = param.getFieldName();
+				Object fieldValue = param.getFieldValue();
+				if(fieldParamMap.containsKey(fieldName)){
+					fieldValue = fieldParamMap.get(fieldName) 
+							     + StringUtil.SAPARATOR + fieldValue;
+				}
+				fieldParamMap.put(fieldName, fieldValue);
+			}
+		}
+		return fieldParamMap;
 	}
 	
 	/**
-	 * 根据参数名获取参数值
-	 * @param paramName
+	 * 获取上传文件映射对象
 	 * @return
 	 */
-	public Object getParamValue(String paramName){
-		return paramMap.get(paramName);
+	public Map<String, List<FileParam>> getFileParamList(){
+		Map<String, List<FileParam>> fileParamMap = new HashMap<String, List<FileParam>>();
+		if(fileParamList.isEmpty()){
+			for(FileParam param : fileParamList){
+				String fieldName = param.getFieldName();
+				if(fileParamMap.containsKey(fieldName)){
+					fileParamMap.get(fieldName).add(param);
+				}else{
+					List<FileParam> tempList = new ArrayList<FileParam>();
+					tempList.add(param);
+					fileParamMap.put(fieldName, tempList);
+				}
+			}
+		}
+		return fileParamMap;
 	}
 	
-	public Map<String, Object> getParamMap(){
-		return paramMap;
+	/**
+	 * 根据属性名称获取文件对象列表
+	 * @param fileName
+	 * @return
+	 */
+	public List<FileParam> getFileParamList(String fileName){
+		Map<String, List<FileParam>> fileParamMap = getFileParamList();
+		return fileParamMap.get(fileName);
 	}
 	
-	public boolean isEmpty(){
-		return paramMap == null || paramMap.isEmpty();
+	public FileParam getFileParamByFieldName(String fileName){
+		FileParam result = null;
+		Map<String, List<FileParam>> fileParamMap = getFileParamList();
+		List<FileParam> fileParamList = fileParamMap.get(fileName);
+		if(!fileParamList.isEmpty() && 1 == fileParamList.size()){
+			result = fileParamList.get(0);
+		}
+		return result;
 	}
+	
 }

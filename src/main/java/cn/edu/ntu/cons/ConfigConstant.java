@@ -18,4 +18,6 @@ public interface ConfigConstant {
 	final String APP_JSP_PATH_PREFIX = "/WEB-INF/jsp/";
 	final String APP_JSP_PATH_SUFFIX = ".jsp";
 	final String APP_ASSET_PATH = "/asset/";
+	
+	final String APP_UPLOAD_LIMIT = "smart.framework.app.upload_limit";
 }

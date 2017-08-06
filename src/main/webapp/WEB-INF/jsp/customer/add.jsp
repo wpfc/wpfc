@@ -36,8 +36,11 @@
 $("#customer_form").ajaxForm({
 	type : "post",
 	url : "${BASE}/addCustomerPage",
-	
-	
+	success : function(data){
+		if(data){
+			alert("success");
+		}
+	}
 });
 </script>
 </body>

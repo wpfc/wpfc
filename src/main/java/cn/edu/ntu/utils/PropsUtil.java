@@ -95,10 +95,18 @@ public class PropsUtil {
     public Integer getInt(String key) {
         return getInt(key, null);
     }
+    
     public Integer getInt(String key, Integer defaultValue) {
         String value = props.getProperty(key);
         if (value != null)
             return Integer.parseInt(value.trim());
+        return defaultValue;
+    }
+    
+    public static int getInt(Properties props, String key, int defaultValue) {
+        String value = props.getProperty(key);
+        if (value != null)
+            return Integer.valueOf(value.trim());
         return defaultValue;
     }
 
