@@ -7,6 +7,7 @@ import cn.edu.ntu.annotation.Action;
 import cn.edu.ntu.annotation.Controller;
 import cn.edu.ntu.annotation.Inject;
 import cn.edu.ntu.cons.SysConstant.RequestMethod;
+import cn.edu.ntu.service.CustomerService;
 import cn.edu.ntu.wpfc.entity.Data;
 import cn.edu.ntu.wpfc.entity.FileParam;
 import cn.edu.ntu.wpfc.entity.Param;

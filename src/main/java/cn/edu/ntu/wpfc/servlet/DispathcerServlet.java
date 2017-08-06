@@ -90,17 +90,17 @@ public class DispathcerServlet extends HttpServlet {
 				}
 			}
 			//处理参数
-			Param param = new Param();
-			if(!paramMap.isEmpty()){
-				param = new Param(paramMap);
-			}
+			//Param param = new Param();
+			//if(!paramMap.isEmpty()){
+			//	param = new Param(paramMap);
+			//}
 			//调用方法
 			Object result = null;
-			if(param.isEmpty()){
-				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod);
-			}else{
-				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
-			}
+//			if(param.isEmpty()){
+//				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod);
+//			}else{
+//				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
+//			}
 			//返回值类型
 			if(result instanceof View){
 				View view = (View) result;
