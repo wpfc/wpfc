@@ -69,38 +69,43 @@ public class DispathcerServlet extends HttpServlet {
 			//获取controller实例
 			Object controllerInstance = BeanHelper.getBean(handler.getControllerClazz());
 			Method actionMethod = handler.getActionMethod();
-			//处理请求对象
-			Map<String, Object> paramMap = new HashMap<String, Object>();
-			Enumeration<String> paramNames = req.getParameterNames();
-			while(paramNames.hasMoreElements()){
-				String paramName = paramNames.nextElement();
-				Object paramValue = req.getParameterValues(paramName);
-				paramMap.put(paramName, paramValue);
-			}
-			String body = CodecUtil.decodeURL(StreamUtil.getStringFromStrean(req.getInputStream()));
-			if(!StringUtils.isEmpty(body)){
-				String[] params = StringUtils.split(body, "&");
-				if(params != null && params.length > 0){
-					for(String param : params){
-						String[] temp = param.split("=");
-						if(temp !=null && 2 == temp.length){
-							paramMap.put(temp[0], temp[1]);
+			
+			//调用方法
+			Object result = null;
+			if(actionMethod.getParameterTypes()!=null && actionMethod.getParameterTypes().length > 0){
+				//处理请求对象
+				Map<String, Object> paramMap = new HashMap<String, Object>();
+				Enumeration<String> paramNames = req.getParameterNames();
+				while(paramNames.hasMoreElements()){
+					String paramName = paramNames.nextElement();
+					Object paramValue = req.getParameterValues(paramName);
+					paramMap.put(paramName, paramValue);
+				}
+				String body = CodecUtil.decodeURL(StreamUtil.getStringFromStrean(req.getInputStream()));
+				if(!StringUtils.isEmpty(body)){
+					String[] params = StringUtils.split(body, "&");
+					if(params != null && params.length > 0){
+						for(String param : params){
+							String[] temp = param.split("=");
+							if(temp !=null && 2 == temp.length){
+								paramMap.put(temp[0], temp[1]);
+							}
 						}
 					}
 				}
+//				//处理参数
+//				Param param = new Param();
+//				if(!paramMap.isEmpty()){
+//					param = new Param(paramMap);
+//				}
+//				if(param.isEmpty()){
+//					result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod);
+//				}else{
+//					result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
+//				}
+			}else{
+				result = ReflectionUtil.invokeMethodWithoutArgs(controllerInstance, actionMethod);
 			}
-			//处理参数
-			//Param param = new Param();
-			//if(!paramMap.isEmpty()){
-			//	param = new Param(paramMap);
-			//}
-			//调用方法
-			Object result = null;
-//			if(param.isEmpty()){
-//				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod);
-//			}else{
-//				result = ReflectionUtil.invokeMethod(controllerInstance, actionMethod, param);
-//			}
 			//返回值类型
 			if(result instanceof View){
 				View view = (View) result;

@@ -3,7 +3,6 @@ package cn.edu.ntu.utils;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  *  反射工具类
@@ -42,6 +41,28 @@ public final class ReflectionUtil {
             } 
 			method.setAccessible(true);
 			result = method.invoke(obj, args);
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	/**
+	 * 调用方法
+	 * @param obj
+	 * @param method
+	 * @param args
+	 * @return
+	 */
+	public static Object invokeMethodWithoutArgs(Object obj, Method method){
+		Object result = null;
+		try {
+			method.setAccessible(true);
+			result = method.invoke(obj);
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (IllegalArgumentException e) {
