@@ -18,6 +18,8 @@ public class Param {
 	
 	private List<FileParam> fileParamList;
 
+	public Param(){}
+	
 	public Param(List<FieldParam> fieldParamList) {
 		super();
 		this.fieldParamList = fieldParamList;
